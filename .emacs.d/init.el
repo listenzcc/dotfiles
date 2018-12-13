@@ -54,6 +54,10 @@
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 (global-set-key (kbd "C-c r") 'highlight-symbol-remove-all)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x o") 'ace-window)
+(global-set-key (kbd "<C-tab>") 'other-window)
+(global-set-key (kbd "C-}") #'other-window)
+(global-set-key (kbd "C-{") #'prev-window)
 ; (setq inhibit-startup-message t) ;; hide the startup message
 ; python setting
 (load-theme 'material t) ;; load material theme
@@ -81,7 +85,7 @@
     ("/home/zcc/.config/bin" "/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/games" "/usr/local/games" "/snap/bin" "/usr/lib/emacs/25.2/x86_64-linux-gnu")))
  '(package-selected-packages
    (quote
-    (magit highlight-symbol highlight ## elpy material-theme better-defaults)))
+    (ace-window magit highlight-symbol highlight ## elpy material-theme better-defaults)))
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
 (custom-set-faces
@@ -89,4 +93,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 141 :width normal)))))
+ '(default ((t (:family "DejaVu Sans" :foundry "PfEd" :slant normal :weight normal :height 120 :width normal)))))
