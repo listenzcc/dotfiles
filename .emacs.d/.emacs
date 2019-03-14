@@ -14,6 +14,8 @@
   (interactive)
   (other-window -1))
 
+(global-set-key (kbd "<f7>") 'recentf-open-files)
+
 ;; custom coding
 (setq default-buffer-file-coding-system 'utf-8) 
 (setq python-indent-guess-indent-offset t)  
@@ -21,8 +23,6 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (defun config/enable-jedi ()
   (add-to-list 'company-backends 'company-jedi))
-(add-hook 'inferior-python-mode-hook 'jedi:setup)
-(add-hook 'inferior-python-mode-hook 'config/enable-jedi)
 (setq jedi:use-shortcuts t)
 
 ;; set home path
@@ -30,13 +30,13 @@
 
 ;; display time
 (display-time-mode t)
+;; auto pair
 (electric-pair-mode t)
 ;; visible bell
 (setq visible-bell t)
 
 ;; recent file
 (recentf-mode 1)
-(global-set-key (kbd "<f7>") 'recentf-open-files)
 
 ;; display line numbers
 (global-display-line-numbers-mode t)
@@ -73,6 +73,13 @@
 
 ;; show COMMAND when M-x COMMAND after 1 second
 (setq suggest-key-bindings 1)
+
+;; imenu
+(semantic-mode 1)
+(setq imenu-list-minor-mode t)
+(defun try-to-add-imenu ()
+	(condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
+(add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 
 ;; packages: ein, elpy, flycheck, material-theme, py-autopep8
 (require 'package)
@@ -122,7 +129,7 @@
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
    (quote
-    (auto-complete ace-window ## window-numbering highlight-symbol term-run git-commit term+ term-cmd git-command git-commit-insert-issue magit powershell py-autopep8 material-theme jedi exec-path-from-shell elpygen elpy ein company-lean company-jedi better-defaults)))
+    (imenu-list imenus auto-complete ace-window ## window-numbering highlight-symbol term-run git-commit term+ term-cmd git-command git-commit-insert-issue magit powershell py-autopep8 material-theme jedi exec-path-from-shell elpygen elpy ein company-lean company-jedi better-defaults)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
