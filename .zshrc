@@ -2,8 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+<<<<<<< HEAD
   export ZSH="/home/liste/.oh-my-zsh"
   export LANG=zh_CN.UTF-8
+=======
+export ZSH=$HOME/.oh-my-zsh
+export LANG=zh_CN.UTF-8
+>>>>>>> e41f31d278c76fa78bc4e9a97a794c7ce210e9de
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -12,11 +17,18 @@
 # ZSH_THEME="agnoster"
 # ZSH_THEME="kphoen"
 
+<<<<<<< HEAD
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
+=======
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+>>>>>>> e41f31d278c76fa78bc4e9a97a794c7ce210e9de
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
@@ -27,7 +39,7 @@
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+ DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -64,9 +76,7 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 PROMPT='[%{$fg[red]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)]
@@ -83,6 +93,26 @@ return_code="%(?..%{$fg[red]%}%? - %{$reset_color%})"
 
 RPROMPT='${return_code}%{$reset_color%}'
 
+
+PROMPT='[%{$fg[red]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)]
+%# '
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=""
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# display exitcode on the right when >0
+return_code="%(?..%{$fg[red]%}%? -%{$reset_color%})"
+RPROMPT='${return_code}%{$reset_color%}'
+
+function cd() {
+    builtin cd "$@"
+    echo Enter `pwd`
+    echo `pwd` > ~/.lastdir
+}
+cd `cat ~/.lastdir`
+
+export PATH=/bin:$PATH
 
 # User configuration
 
@@ -112,6 +142,7 @@ RPROMPT='${return_code}%{$reset_color%}'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+<<<<<<< HEAD
 
 
 function cd(){
@@ -122,3 +153,5 @@ function cd(){
 cd `cat ~/.lastdir`
 
 export PATH=~/bin:/bin:/usr/lib/lapack:$PATH
+=======
+>>>>>>> e41f31d278c76fa78bc4e9a97a794c7ce210e9de
