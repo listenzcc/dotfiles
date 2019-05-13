@@ -2,26 +2,28 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/zcc/.oh-my-zsh"
+  export ZSH="/home/liste/.oh-my-zsh"
+  export LANG=zh_CN.UTF-8
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-ZSH_THEME="kphoen"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="kphoen"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -58,8 +60,7 @@ ZSH_THEME="kphoen"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
@@ -68,6 +69,20 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+PROMPT='[%{$fg[red]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)]
+%# '
+PROMPT='[%{$fg[red]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}]
+%# '
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=""
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# display exitcode on the right when >0
+return_code="%(?..%{$fg[red]%}%? - %{$reset_color%})"
+
+RPROMPT='${return_code}%{$reset_color%}'
+
 
 # User configuration
 
@@ -98,38 +113,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias cp='cp -i'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
-alias l.='ls -d .* --color=auto'
-alias ll='ls -l --color=auto'
-alias ls='ls --color=auto'
-alias mv='mv -i'
-alias rm='rm -i'
 
-function cd()
-{
-    builtin cd $1 && ls
+function cd(){
+	builtin cd "$@"
+	echo Enter `pwd`
+	echo `pwd` > ~/.lastdir
 }
+cd `cat ~/.lastdir`
 
-export PATH=~/.config/bin:$PATH
-
-if [ "$TERM" = "linux" ]; then
-    echo -en "\e]PB657b83" # S_base00
-    echo -en "\e]PA586e75" # S_base01
-    echo -en "\e]P0073642" # S_base02
-    echo -en "\e]P62aa198" # S_cyan
-    echo -en "\e]P8002b36" # S_base03
-    echo -en "\e]P2859900" # S_green
-    echo -en "\e]P5d33682" # S_magenta
-    echo -en "\e]P1dc322f" # S_red
-    echo -en "\e]PC839496" # S_base0
-    echo -en "\e]PE93a1a1" # S_base1
-    echo -en "\e]P9cb4b16" # S_orange
-    echo -en "\e]P7eee8d5" # S_base2
-    echo -en "\e]P4268bd2" # S_blue
-    echo -en "\e]P3b58900" # S_yellow
-    echo -en "\e]PFfdf6e3" # S_base3
-    echo -en "\e]PD6c71c4" # S_violet
-fi
+export PATH=~/bin:/bin:/usr/lib/lapack:$PATH
