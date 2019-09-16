@@ -1,0 +1,11 @@
+[user]
+	name = zcc
+	email = listenzcc@mail.bnu.edu.cn
+[color]
+	ui = true
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    st = status
+[core]
+	autocrlf = false
+	safecrlf = true
